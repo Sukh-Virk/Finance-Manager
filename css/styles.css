@@ -1,0 +1,75 @@
+/* Reset & base */
+* {
+     box-sizing: border-box;
+     margin: 0;
+     padding: 0;
+   }
+   
+   body {
+     font-family: Arial, sans-serif;
+     background-color: #f9f9f9;
+     color: #333;
+   }
+   
+   /* Centered wrapper */
+   .container {
+     max-width: 800px;
+     margin: 0 auto;
+     text-align: center;
+     padding: 100px 20px;
+   }
+   
+   /* Hero styles */
+   .hero-title {
+     font-size: 48px;
+     color: #4CAF50; /* green */
+     margin-bottom: 10px;
+   }
+   .hero-subtitle {
+     font-size: 24px;
+     color: #555;
+     margin-bottom: 40px;
+   }
+   
+   /* Buttons */
+   .button-group .btn {
+     display: inline-block;
+     padding: 12px 24px;
+     margin: 0 10px;
+     font-size: 16px;
+     text-decoration: none;
+     border-radius: 4px;
+     transition: background-color 0.2s;
+   }
+   .btn-primary {
+     background-color: #4CAF50;
+     color: #fff;
+     border: none;
+   }
+   .btn-secondary {
+     background-color: transparent;
+     color: #4CAF50;
+     border: 2px solid #4CAF50;
+   }
+   .btn-secondary:hover {
+     background-color: #4CAF50;
+     color: #fff;
+   }
+   
+   /* Dashboard & Info titles */
+   .dashboard-title,
+   .info-title {
+     font-size: 36px;
+     color: #4CAF50;
+     margin-bottom: 20px;
+   }
+   
+   /* Simple footer for back-links */
+   .back-link {
+     display: inline-block;
+     margin-top: 40px;
+     color: #4CAF50;
+     text-decoration: none;
+     font-size: 16px;
+   }
+   
