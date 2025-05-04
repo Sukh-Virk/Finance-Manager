@@ -1,1 +1,1 @@
-console.log('SpendSight app loaded');
+console.log('app loaded');
