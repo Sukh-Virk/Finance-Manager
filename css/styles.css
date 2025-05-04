@@ -1,75 +1,167 @@
-/* Reset & base */
-* {
-     box-sizing: border-box;
-     margin: 0;
-     padding: 0;
-   }
-   
-   body {
-     font-family: Arial, sans-serif;
-     background-color: #f9f9f9;
-     color: #333;
-   }
-   
-   /* Centered wrapper */
-   .container {
-     max-width: 800px;
-     margin: 0 auto;
-     text-align: center;
-     padding: 100px 20px;
-   }
-   
-   /* Hero styles */
-   .hero-title {
-     font-size: 48px;
-     color: #4CAF50; /* green */
-     margin-bottom: 10px;
-   }
-   .hero-subtitle {
-     font-size: 24px;
-     color: #555;
-     margin-bottom: 40px;
-   }
-   
-   /* Buttons */
-   .button-group .btn {
-     display: inline-block;
-     padding: 12px 24px;
-     margin: 0 10px;
-     font-size: 16px;
-     text-decoration: none;
-     border-radius: 4px;
-     transition: background-color 0.2s;
-   }
-   .btn-primary {
-     background-color: #4CAF50;
-     color: #fff;
-     border: none;
-   }
-   .btn-secondary {
-     background-color: transparent;
-     color: #4CAF50;
-     border: 2px solid #4CAF50;
-   }
-   .btn-secondary:hover {
-     background-color: #4CAF50;
-     color: #fff;
-   }
-   
-   /* Dashboard & Info titles */
-   .dashboard-title,
-   .info-title {
-     font-size: 36px;
-     color: #4CAF50;
-     margin-bottom: 20px;
-   }
-   
-   /* Simple footer for back-links */
-   .back-link {
-     display: inline-block;
-     margin-top: 40px;
-     color: #4CAF50;
-     text-decoration: none;
-     font-size: 16px;
-   }
-   
+/* =============== Reset & Base Styles =============== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html {
+  font-family: 'Segoe UI', Roboto, Helvetica, sans-serif;
+  line-height: 1.5;
+  scroll-behavior: smooth;
+}
+body {
+  background-color: #f4f6f8;
+  color: #333;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* =============== Layout Helpers =============== */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 0;
+}
+header, footer {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+main {
+  flex: 1;
+}
+
+/* =============== Header =============== */
+header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.site-logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #4CAF50;
+  text-decoration: none;
+}
+nav a {
+  margin-left: 24px;
+  color: #555;
+  text-decoration: none;
+  font-weight: 500;
+}
+nav a:hover {
+  color: #4CAF50;
+}
+
+/* =============== Footer =============== */
+footer {
+  text-align: center;
+  padding: 16px 0;
+  font-size: 0.9rem;
+  color: #777;
+}
+
+/* =============== Buttons =============== */
+.btn {
+  display: inline-block;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 12px 28px;
+  border-radius: 4px;
+  transition: background-color .2s, color .2s;
+}
+.btn-primary {
+  background-color: #4CAF50;
+  color: #fff;
+}
+.btn-primary:hover {
+  background-color: #43a047;
+}
+.btn-secondary {
+  background-color: transparent;
+  color: #4CAF50;
+  border: 2px solid #4CAF50;
+}
+.btn-secondary:hover {
+  background-color: #4CAF50;
+  color: #fff;
+}
+
+/* =============== Landing Page =============== */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 128px);
+  text-align: center;
+}
+.hero h1 {
+  font-size: 3rem;
+  color: #4CAF50;
+  margin-bottom: 16px;
+}
+.hero p {
+  font-size: 1.25rem;
+  color: #555;
+  margin-bottom: 32px;
+}
+
+/* =============== About Page =============== */
+.about-content {
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+.about-content h1 {
+  font-size: 2.5rem;
+  color: #4CAF50;
+  margin-bottom: 24px;
+}
+.about-content p {
+  margin-bottom: 16px;
+}
+
+/* =============== Dashboard =============== */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+.dashboard-header h1 {
+  font-size: 2rem;
+  color: #4CAF50;
+}
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+  margin-bottom: 40px;
+}
+.card {
+  background-color: #fff;
+  border-radius: 6px;
+  padding: 24px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+.card h2 {
+  font-size: 1.25rem;
+  margin-bottom: 12px;
+  color: #333;
+}
+.card p {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #4CAF50;
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  .hero h1 { font-size: 2.25rem; }
+  .hero p  { font-size: 1rem; }
+  nav a    { margin-left: 16px; font-size: .95rem; }
+}
