@@ -164,3 +164,47 @@ footer {
   .hero p  { font-size: 1rem; }
   nav a    { margin-left: 16px; font-size: .95rem; }
 }
+
+/* Enable smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Hero tweaks */
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #4caf50 0%, #81c784 100%);
+  color: #fff;
+  text-align: center;
+}
+.hero h1 { font-size: clamp(2.5rem, 8vw, 4rem); }
+.hero p  { font-size: clamp(1.25rem, 3vw, 1.5rem); margin-bottom: 2rem; }
+.button-group .btn-secondary {
+  margin-right: 1rem;
+}
+
+/* About Section */
+.about-section {
+  padding: 100px 20px;
+  background-color: #fff;
+}
+.about-section h2 {
+  font-size: clamp(2rem, 6vw, 3rem);
+  color: #4caf50;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.about-content {
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.75;
+}
+.about-content p {
+  margin-bottom: 1rem;
+  color: #555;
+  font-size: 1.1rem;
+}
