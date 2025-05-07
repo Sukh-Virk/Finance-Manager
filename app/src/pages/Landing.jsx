@@ -1,86 +1,91 @@
 import React from 'react';
-// 1️⃣ Import Link for React‐Router navigation
 import { Link } from 'react-router-dom';
-// 2️⃣ Import and rename Link from react-scroll for smooth scrolling
-import { Link as ScrollLink, Element } from 'react-scroll';
+import { FaLock, FaTags, FaChartLine, FaWallet } from 'react-icons/fa';
 import { motion } from 'framer-motion';
-import '../styles.css';
 
 export default function Landing() {
   return (
     <>
-      {/* Hero Section */}
+      {/* Top nav */}
+      <header className="landing-header">
+        <div className="container">
+          <Link to="/" className="site-logo">Spara</Link>
+          <nav>
+            <a href="#overview" className="btn btn-secondary">Overview</a>
+            <Link to="/dashboard" className="btn btn-primary">Dashboard</Link>
+          </nav>
+        </div>
+      </header>
+
+      {/* Hero */}
       <section className="hero">
-        <motion.h1
-          initial={{ y: -50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8 }}
-        >
-          Welcome to Spara
-        </motion.h1>
-        <motion.p
-          initial={{ y: 50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-        >
-          See today’s habits and tomorrow’s trends.
-        </motion.p>
-        <div className="button-group">
-          {/* smooth scroll to the About below */}
-          <ScrollLink
-            to="about"
-            smooth={true}
-            duration={600}
-            className="btn btn-secondary"
+        <div className="hero-content container">
+          <motion.div
+            initial={{ x:-50, opacity:0 }}
+            animate={{ x:0, opacity:1 }}
+            transition={{ delay:0.3, duration:0.8 }}
           >
-            Learn More ↓
-          </ScrollLink>
-          {/* navigate to /dashboard route */}
-          <Link to="/dashboard" className="btn btn-primary">
-            Get Started
-          </Link>
+            <h1>See today’s habits and tomorrow’s trends.</h1>
+            <p>
+              Unified data, intelligent categorization, and proactive forecasting—
+              all in one place.
+            </p>
+            <div className="hero-buttons">
+              <Link to="/dashboard" className="btn btn-primary">Get Started</Link>
+              <a href="#overview" className="btn btn-secondary">Learn More</a>
+            </div>
+          </motion.div>
+          <motion.div
+            initial={{ x:50, opacity:0 }}
+            animate={{ x:0, opacity:1 }}
+            transition={{ delay:0.6, duration:0.8 }}
+            style={{ textAlign:'center' }}
+          >
+            <FaWallet style={{ fontSize:'6rem', color:'#85e085' }} />
+          </motion.div>
         </div>
       </section>
 
-      {/* About Section */}
-      <Element name="about">
-        <section className="about-section">
-          <motion.h2
-            initial={{ x: -100, opacity: 0 }}
-            whileInView={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.6 }}
-          >
-            About Spara
-          </motion.h2>
-          <motion.div
-            className="about-content"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={{
-              hidden: { opacity: 0, y: 30 },
-              visible: {
-                opacity: 1,
-                y: 0,
-                transition: { staggerChildren: 0.2 }
-              }
-            }}
-          >
-            {[
-              `In today’s fast paced world, tracking your spending can feel like chasing shadows.`,
-              `SpendSight transforms this experience by unifying your data, applying ML categorization, and forecasting your future spending.`,
-              `Elegant visualizations, personalized budget targets, and proactive alerts keep you on track—before you exceed your limits.`
-            ].map((text, i) => (
-              <motion.p key={i} variants={{
-                hidden: { opacity: 0, y: 20 },
-                visible: { opacity: 1, y: 0 }
-              }}>
-                {text}
-              </motion.p>
-            ))}
-          </motion.div>
-        </section>
-      </Element>
+      {/* Overview */}
+      <section id="overview" className="section container">
+        <h2>Overview</h2>
+        <p>
+          In today’s fast-paced world, transactions scatter across accounts and spreadsheets.
+          By the time you track them, you’ve overspent. Spara unifies your data via secure
+          connections or uploads, applies ML to categorize every purchase, and forecasts
+          spending in real time so you stay ahead of your budget.
+        </p>
+      </section>
+
+      {/* Features */}
+      <section className="section container">
+        <h2>Key Features</h2>
+        <div className="feature-grid">
+          {[
+            { icon:FaLock,      title:'Secure Connections',   text:'Link banks via OAuth or upload CSVs—no credentials stored.' },
+            { icon:FaTags,      title:'Auto Categorization',  text:'AI automatically labels every transaction.' },
+            { icon:FaChartLine, title:'Predictive Forecasts', text:'Get month-ahead spending predictions before it’s too late.' }
+          ].map((f,i)=>(
+            <motion.div
+              key={i}
+              className="feature-card"
+              initial={{ opacity:0, y:20 }}
+              whileInView={{ opacity:1, y:0 }}
+              viewport={{ once:true }}
+              transition={{ delay:i*0.2, duration:0.6 }}
+            >
+              <f.icon className="feature-icon"/>
+              <h3>{f.title}</h3>
+              <p>{f.text}</p>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="footer">
+        <div className="container">© 2025 Spara Services Inc.</div>
+      </footer>
     </>
   );
 }
