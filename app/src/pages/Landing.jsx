@@ -31,7 +31,7 @@ export default function Landing() {
               all in one place.
             </p>
             <div className="hero-buttons">
-              <Link to="/dashboard" className="btn btn-primary">Get Started</Link>
+              <Link to="/login" className="btn btn-primary">Get Started</Link>
               <a href="#overview" className="btn btn-secondary">Learn More</a>
             </div>
           </motion.div>
