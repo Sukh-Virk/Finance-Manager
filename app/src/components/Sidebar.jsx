@@ -1,14 +1,29 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { FaTachometerAlt, FaWallet, FaExchangeAlt, FaFileInvoiceDollar, FaChartPie, FaCog, FaSignOutAlt } from 'react-icons/fa';
+import { Link, useNavigate } from 'react-router-dom';
+import { FaTachometerAlt, FaWallet, FaExchangeAlt, FaFileInvoiceDollar, FaChartPie, FaCog, FaSignOutAlt, FaHome } from 'react-icons/fa';
+import { useAuth } from '../contexts/authContext';
 
 export default function Sidebar() {
-  const loc = useLocation();
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+      navigate('/');
+    } catch (error) {
+      console.error('Failed to logout:', error);
+    }
+  };
+
   return (
     <aside className="sidebar">
-      <Link to="/" className="back-home">← Home</Link>
+      <Link to="/" className="back-home">
+        <FaHome /> Home
+      </Link>
+      
       <nav>
-        <Link to="/dashboard"     className={loc.pathname==='/dashboard'?'active':''}>
+        <Link to="/dashboard">
           <FaTachometerAlt /> Overview
         </Link>
         <Link to="/dashboard/balances">
@@ -27,9 +42,16 @@ export default function Sidebar() {
           <FaCog /> Settings
         </Link>
       </nav>
-      <Link to="/" className="back-home">
+
+      <button onClick={handleLogout} className="logout-button">
         <FaSignOutAlt /> Logout
-      </Link>
+      </button>
+
+      {user && (
+        <div className="user-info">
+          Signed in as {user.email}
+        </div>
+      )}
     </aside>
   );
 }
