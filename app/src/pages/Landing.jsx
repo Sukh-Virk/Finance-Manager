@@ -11,8 +11,8 @@ export default function Landing() {
         <div className="container">
           <Link to="/" className="site-logo">Spara</Link>
           <nav>
-            <a href="#overview" className="btn btn-secondary">Overview</a>
-            <Link to="/dashboard" className="btn btn-primary">Dashboard</Link>
+            <a href="#overview" className="btn btn-secondary">Learn More</a>
+            <Link to="/dashboard" className="btn btn-primary">Login / Sign up</Link>
           </nav>
         </div>
       </header>

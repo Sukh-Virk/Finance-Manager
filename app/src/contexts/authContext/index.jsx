@@ -1,47 +1,38 @@
-import { auth } from "../../firebase/firebase";
-import { useEffect, useContext, useState, createContext} from "react";
-import {onAuthStateChanged} from "firebase/auth";
+import React, { createContext, useContext, useEffect, useState } from 'react';
+import { onAuthStateChanged, signOut } from 'firebase/auth';
+import { auth } from '../../firebase/firebase';
 
 const AuthContext = createContext();
 
 export function useAuth() {
-    return useContext(AuthContext);
+  return useContext(AuthContext);
 }
 
 export function AuthProvider({ children }) {
-    const [currentUser, setCurrentUser] = useState(null);
-    const [userLoggedIn, setUserLoggedIn] = useState(false);
-    const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, initalizeUser);
-        return unsubscribe;
-    }, [])
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      setLoading(false);
+    });
 
-    async function initalizeUser(user) {
-        if(user)
-        {
-            setCurrentUser({...user});
-            setUserLoggedIn(true);
-        }
+    return unsubscribe;
+  }, []);
 
-        else {
-            setCurrentUser(null);
-            setUserLoggedIn(false);
-        }
-        setLoading(false);
-    }
+  function logout() {
+    return signOut(auth);
+  }
 
-    const value = {
-        currentUser,
-        userLoggedIn,
-        loading
-    }
+  const value = {
+    user,
+    logout,
+  };
 
-    return (
-        <AuthContext.Provider value={value}>
-            {!loading && children}
-        </AuthContext.Provider>
-    )
-
+  return (
+    <AuthContext.Provider value={value}>
+      {!loading && children}
+    </AuthContext.Provider>
+  );
 }

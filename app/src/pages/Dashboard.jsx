@@ -2,8 +2,11 @@ import React from 'react';
 import Sidebar from '../components/Sidebar';
 import { FaWallet, FaDollarSign, FaChartLine } from 'react-icons/fa';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
+import { useAuth } from '../contexts/authContext';
 
 export default function Dashboard() {
+  const { user } = useAuth();
+
   const stats = [
     { icon:FaWallet,     label:'Total Balance', value:'$240,399' },
     { icon:FaDollarSign, label:'Monthly Budget', value:'$20,000' },
@@ -25,6 +28,9 @@ export default function Dashboard() {
       <Sidebar />
 
       <div className="dashboard-main">
+        <h1>Dashboard</h1>
+        <p>Welcome, {user.email}!</p>
+
         {/* Stats */}
         <div className="dashboard-grid three">
           {stats.map((s,i)=>(

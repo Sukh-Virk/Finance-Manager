@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { FaLock } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import { auth } from "../firebase/firebase"; // Ensure the path is correct
 import { signInWithEmailAndPassword } from "firebase/auth";
@@ -41,9 +40,6 @@ export default function Login() {
       <header className="landing-header">
         <div className="container">
           <Link to="/" className="site-logo">Spara</Link>
-          <nav>
-            <Link to="/dashboard" className="btn btn-primary">Dashboard</Link>
-          </nav>
         </div>
       </header>
 
@@ -89,15 +85,6 @@ export default function Login() {
               <p>Don't have an account? <Link to="/register">Sign Up</Link></p>
               <p><Link to="/forgot-password">Forgot Password?</Link></p>
             </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ x: 50, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ delay: 0.6, duration: 0.8 }}
-            style={{ textAlign: 'center' }}
-          >
-            <FaLock style={{ fontSize: '6rem', color: '#85e085' }} />
           </motion.div>
         </div>
       </section>
