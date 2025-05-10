@@ -9,47 +9,55 @@ export default function Landing() {
 
   return (
     <>
-      {/* Top nav */}
+      {/* Top Nav */}
       <header className="landing-header">
         <div className="container">
           <Link to="/" className="site-logo">Spara</Link>
           <nav>
-            <a href="#overview" className="btn btn-secondary">Overview</a>
-            <Link to="/dashboard" className="btn btn-primary">Dashboard</Link>
+            <a href="#overview" className="btn btn-secondary">Learn More</a>
+            {user ? (
+              <Link to="/dashboard" className="btn btn-primary">Go to Dashboard</Link>
+            ) : (
+              <>
+                <Link to="/login" className="btn btn-primary">Login</Link>
+                <Link to="/register" className="btn btn-primary">Sign Up</Link>
+              </>
+            )}
           </nav>
         </div>
       </header>
 
-      {/* Hero */}
+      {/* Hero Section */}
       <section className="hero">
         <div className="hero-content container">
           <motion.div
-            initial={{ x:-50, opacity:0 }}
-            animate={{ x:0, opacity:1 }}
-            transition={{ delay:0.3, duration:0.8 }}
+            initial={{ x: -50, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ delay: 0.3, duration: 0.8 }}
           >
-            <h1>See today’s habits and tomorrow’s trends.</h1>
+            <h1>See today's habits and tomorrow's trends.</h1>
             <p>
               Unified data, intelligent categorization, and proactive forecasting—
               all in one place.
             </p>
             <div className="hero-buttons">
-              <Link to="/login" className="btn btn-primary">Get Started</Link>
+              {user ? (
+                <Link to="/dashboard" className="btn btn-primary">Go to Dashboard</Link>
+              ) : (
+                <Link to="/login" className="btn btn-primary">Get Started</Link>
+              )}
               <a href="#overview" className="btn btn-secondary">Learn More</a>
             </div>
-          </motion.div>
-          <motion.div
-            initial={{ x:50, opacity:0 }}
-            animate={{ x:0, opacity:1 }}
-            transition={{ delay:0.6, duration:0.8 }}
-            style={{ textAlign:'center' }}
-          >
-            <FaWallet style={{ fontSize:'6rem', color:'#85e085' }} />
+            {user && (
+              <p className="signed-in-text">
+                Signed in as {user.email}
+              </p>
+            )}
           </motion.div>
         </div>
       </section>
 
-      {/* Overview */}
+      {/* Overview Section */}
       <section id="overview" className="section container">
         <h2>Overview</h2>
         <p>
