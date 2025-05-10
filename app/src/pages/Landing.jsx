@@ -1,76 +1,64 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaLock, FaTags, FaChartLine, FaWallet } from 'react-icons/fa';
 import { motion } from 'framer-motion';
+import { useAuth } from '../contexts/authContext';
+import { FaLock, FaTags, FaChartLine } from 'react-icons/fa';
 
 export default function Landing() {
+  const { user } = useAuth();
+
   return (
     <>
-      {/* Top Navigation */}
+      {/* Top nav */}
       <header className="landing-header">
         <div className="container">
           <Link to="/" className="site-logo">Spara</Link>
-          <nav aria-label="Primary Navigation">
+          <nav>
             <a href="#overview" className="btn btn-secondary">Overview</a>
             <Link to="/dashboard" className="btn btn-primary">Dashboard</Link>
           </nav>
         </div>
       </header>
 
-      {/* Hero Section */}
-      <main>
-        <section className="hero" aria-labelledby="hero-heading">
-          <div className="hero-content container">
-            <motion.div
-              initial={{ x: -50, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ delay: 0.3, duration: 0.8 }}
-              className="hero-text"
-            >
-              <h1 id="hero-heading">See today’s habits and tomorrow’s trends.</h1>
-              <p>
-                Unified data, intelligent categorization, and proactive forecasting—
-                all in one place.
-              </p>
-              <div className="hero-buttons" role="navigation" aria-label="Hero Actions">
-                <Link to="/login" className="btn btn-primary">Get Started</Link>
-                <a href="#overview" className="btn btn-secondary">Learn More</a>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ x: 50, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ delay: 0.6, duration: 0.8 }}
-              className="hero-icon"
-            >
-              <FaWallet aria-hidden="true" className="wallet-icon" />
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Overview Section */}
-        <section id="overview" className="section container" aria-labelledby="overview-heading">
-          <motion.h2 
-            id="overview-heading"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
+      {/* Hero */}
+      <section className="hero">
+        <div className="hero-content container">
+          <motion.div
+            initial={{ x:-50, opacity:0 }}
+            animate={{ x:0, opacity:1 }}
+            transition={{ delay:0.3, duration:0.8 }}
           >
-            Overview
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="overview-text"
+            <h1>See today’s habits and tomorrow’s trends.</h1>
+            <p>
+              Unified data, intelligent categorization, and proactive forecasting—
+              all in one place.
+            </p>
+            <div className="hero-buttons">
+              <Link to="/login" className="btn btn-primary">Get Started</Link>
+              <a href="#overview" className="btn btn-secondary">Learn More</a>
+            </div>
+          </motion.div>
+          <motion.div
+            initial={{ x:50, opacity:0 }}
+            animate={{ x:0, opacity:1 }}
+            transition={{ delay:0.6, duration:0.8 }}
+            style={{ textAlign:'center' }}
           >
-            In today’s fast-paced world, transactions scatter across accounts and spreadsheets.
-            By the time you track them, you’ve overspent. Spara unifies your data via secure
-            connections or uploads, applies ML to categorize every purchase, and forecasts
-            spending in real-time so you stay ahead of your budget.
-          </motion.p>
-        </section>
+            <FaWallet style={{ fontSize:'6rem', color:'#85e085' }} />
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Overview */}
+      <section id="overview" className="section container">
+        <h2>Overview</h2>
+        <p>
+          In today’s fast-paced world, transactions scatter across accounts and spreadsheets.
+          By the time you track them, you’ve overspent. Spara unifies your data via secure
+          connections or uploads, applies ML to categorize every purchase, and forecasts
+          spending in real time so you stay ahead of your budget.
+        </p>
+      </section>
 
         {/* Features Section */}
         <section className="section container" aria-labelledby="features-heading">
@@ -97,7 +85,6 @@ export default function Landing() {
             ))}
           </div>
         </section>
-      </main>
 
       {/* Footer */}
       <footer className="footer">
