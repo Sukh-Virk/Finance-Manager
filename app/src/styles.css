@@ -104,7 +104,7 @@ body {
 }
 
 .landing-header nav .btn-secondary {
-  background: transparent;
+  background: #fff;
   border: 2px solid var(--color-primary);
   color: var(--color-primary);
 }
