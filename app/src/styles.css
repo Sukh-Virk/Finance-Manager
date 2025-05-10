@@ -170,6 +170,16 @@ body {
   background: var(--color-alt-bg);
 }
 
+.section.full-width {
+  background: var(--color-alt-bg);
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
 .section h2 {
   font-family: var(--font-heading);
   font-size: 2.25rem;
