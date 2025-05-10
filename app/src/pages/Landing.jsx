@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useAuth } from '../contexts/authContext';
 import { FaLock, FaTags, FaChartLine } from 'react-icons/fa';
+import { FaWallet } from 'react-icons/fa';
 
 export default function Landing() {
   const { user } = useAuth();
@@ -53,6 +54,15 @@ export default function Landing() {
                 Signed in as {user.email}
               </p>
             )}
+          </motion.div>
+
+          <motion.div
+            initial={{ x: 50, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ delay: 0.6, duration: 0.8 }}
+            className="hero-icon"
+          >
+            <FaWallet className="hero-wallet-icon" />
           </motion.div>
         </div>
       </section>
