@@ -47,7 +47,6 @@ export default function Landing() {
               ) : (
                 <Link to="/login" className="btn btn-primary">Get Started</Link>
               )}
-              <a href="#overview" className="btn btn-secondary">Learn More</a>
             </div>
             {user && (
               <p className="signed-in-text">

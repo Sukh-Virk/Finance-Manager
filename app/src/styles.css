@@ -3,12 +3,14 @@
 ─────────────────────────────────────────────────────────*/
 /* Updated color scheme to green */
 :root {
-  --color-primary:   #28a745;
-  --color-secondary: #85e085;
-  --color-bg:        #fff;
-  --color-alt-bg:    #f9f9f9;
-  --color-text:      #333;
-  --font-heading:    'Inter', sans-serif;
+  --color-primary:   #28a745; /* Green */
+  --color-secondary: #218838; /* Darker Green */
+  --color-bg:        #f8f9fa; /* Light Gray */
+  --color-alt-bg:    #ffffff; /* White */
+  --color-text:      #212529; /* Dark Gray */
+  --color-accent:    #17a2b8; /* Teal */
+  --color-error:     #dc3545; /* Red */
+  --font-heading:    'Poppins', sans-serif;
   --font-body:       'Roboto', sans-serif;
 }
 
@@ -40,7 +42,7 @@ body {
   cursor: pointer;
 }
 .btn-primary {
-  background:var(--color-primary); color:#fff; padding:.75rem 1.5rem;
+  background:var(--color-primary);border:2px solid var(--color-bg); color:#fff; padding:.75rem 1.5rem;
 }
 
 .btn-primary:hover {
