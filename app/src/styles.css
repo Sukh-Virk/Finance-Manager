@@ -48,7 +48,7 @@ body {
 }
 
 .btn-secondary {
-  background:transparent; border:2px solid var(--color-primary);
+  background:#fff; border:2px solid var(--color-primary);
   color:var(--color-primary); padding:.6rem 1.4rem;
 }
 .btn-secondary:hover {
