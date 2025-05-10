@@ -68,34 +68,37 @@ export default function Landing() {
         </p>
       </section>
 
-      {/* Features */}
-      <section className="section container">
-        <h2>Key Features</h2>
-        <div className="feature-grid">
-          {[
-            { icon:FaLock,      title:'Secure Connections',   text:'Link banks via OAuth or upload CSVs—no credentials stored.' },
-            { icon:FaTags,      title:'Auto Categorization',  text:'AI automatically labels every transaction.' },
-            { icon:FaChartLine, title:'Predictive Forecasts', text:'Get month-ahead spending predictions before it’s too late.' }
-          ].map((f,i)=>(
-            <motion.div
-              key={i}
-              className="feature-card"
-              initial={{ opacity:0, y:20 }}
-              whileInView={{ opacity:1, y:0 }}
-              viewport={{ once:true }}
-              transition={{ delay:i*0.2, duration:0.6 }}
-            >
-              <f.icon className="feature-icon"/>
-              <h3>{f.title}</h3>
-              <p>{f.text}</p>
-            </motion.div>
-          ))}
-        </div>
-      </section>
+        {/* Features Section */}
+        <section className="section container" aria-labelledby="features-heading">
+          <h2 id="features-heading">Key Features</h2>
+          <div className="feature-grid" role="list">
+            {[
+              { icon: FaLock, title: 'Secure Connections', text: 'Link banks via OAuth or upload CSVs—no credentials stored.' },
+              { icon: FaTags, title: 'Auto Categorization', text: 'AI automatically labels every transaction.' },
+              { icon: FaChartLine, title: 'Predictive Forecasts', text: 'Get month-ahead spending predictions before it’s too late.' }
+            ].map((feature, index) => (
+              <motion.div
+                key={index}
+                className="feature-card"
+                role="listitem"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.2, duration: 0.6 }}
+              >
+                <feature.icon className="feature-icon" aria-hidden="true" />
+                <h3>{feature.title}</h3>
+                <p>{feature.text}</p>
+              </motion.div>
+            ))}
+          </div>
+        </section>
 
       {/* Footer */}
       <footer className="footer">
-        <div className="container">© 2025 Spara Services Inc.</div>
+        <div className="container">
+          <p>© 2025 Spara Services Inc.</p>
+        </div>
       </footer>
     </>
   );
