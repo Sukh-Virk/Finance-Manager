@@ -58,15 +58,25 @@ export default function Landing() {
       </section>
 
       {/* Overview Section */}
-      <section id="overview" className="section container">
-        <h2>Overview</h2>
-        <p>
-          In today’s fast-paced world, transactions scatter across accounts and spreadsheets.
-          By the time you track them, you’ve overspent. Spara unifies your data via secure
-          connections or uploads, applies ML to categorize every purchase, and forecasts
-          spending in real time so you stay ahead of your budget.
-        </p>
-      </section>
+          <section id="overview" className="section full-width">
+      <motion.h2 
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.6 }}
+      >
+        Overview
+      </motion.h2>
+      <motion.p
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+      >
+        In today’s fast-paced world, transactions scatter across accounts and spreadsheets.
+        By the time you track them, you’ve overspent. Spara unifies your data via secure
+        connections or uploads, applies ML to categorize every purchase, and forecasts
+        spending in real time so you stay ahead of your budget.
+      </motion.p>
+    </section>
 
         {/* Features Section */}
         <section className="section container" aria-labelledby="features-heading">
